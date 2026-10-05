@@ -1,71 +1,64 @@
-# Unit Converter GUI
+# 단위 변환기 GUI
 
-A user-friendly graphical interface for converting between various units of measurement.
+다양한 단위를 빠르고 쉽게 변환할 수 있는 GUI 애플리케이션입니다.
 
-## Features
+## 주요 기능
 
-- 🔄 Multiple unit categories
-  - Length (meters, feet, kilometers, miles)
-  - Weight (kilograms, pounds, grams, ounces)
-  - Temperature (Celsius, Fahrenheit, Kelvin)
-  - Volume (liters, milliliters, gallons)
-  - Speed (m/s, km/h, mph)
+- 🔄 **길이 변환** - 미터, 피트, 킬로미터, 마일 등
+- ⚖️ **무게 변환** - 킬로그램, 파운드, 그램, 온스 등
+- 🌡️ **온도 변환** - 섭씨, 화씨, 켈빈
+- 💧 **부피 변환** - 리터, 밀리리터, 갤런 등
+- 💨 **속도 변환** - m/s, km/h, mph 등
+- ⚡ **실시간 변환** - 입력 즉시 결과 표시
+- 🎨 **직관적인 인터페이스** - 누구나 쉽게 사용 가능
 
-- 💻 Simple and intuitive interface
-  - Real-time conversion
-  - Easy unit selection
-  - Clear result display
+## 필수 요구사항
 
-- 🎯 Fast and accurate calculations
+- Python 3.8 이상
+- Tkinter (Python에 기본 포함)
 
-## Installation
+## 설치 방법
 
-### Prerequisites
-- Python 3.8 or higher
-- Tkinter (included with most Python installations)
-
-### Steps
-
-1. Clone the repository
+1. 저장소 복제
 ```bash
 git clone https://github.com/hyeon013/gui.git
 cd gui
 ```
 
-2. Run the application
+2. 프로그램 실행
 ```bash
 python main.py
 ```
 
-## Usage
+## 사용 방법
 
-1. Launch the program.
-2. Choose a category such as length, weight, temperature, or volume.
-3. Enter the value to convert.
-4. Select the source unit and target unit.
-5. View the converted result instantly.
+1. 프로그램을 실행합니다.
+2. 변환하고 싶은 카테고리를 선택합니다 (길이, 무게, 온도 등).
+3. 변환할 값을 입력합니다.
+4. 변환 전 단위와 변환 후 단위를 선택합니다.
+5. 변환된 결과를 확인합니다.
 
-## Project Structure
+## 프로젝트 구조
 
 ```text
 gui/
-├── main.py
-├── converter.py
+├── main.py              # 메인 애플리케이션
+├── converter.py         # 변환 로직
 ├── ui/
-│   └── app.py
+│   └── app.py          # GUI 인터페이스
 ├── README.md
-└── requirements.txt
+└── requirements.txt     # 의존 패키지
 ```
 
-## Technologies
+## 기술 스택
 
-- Python
-- Tkinter
+- **언어**: Python
+- **GUI 프레임워크**: Tkinter
 
-## License
+## 라이선스
 
-This project is licensed under the MIT License.
+이 프로젝트는 MIT 라이선스를 따릅니다.
 
-## Author
+## 작성자
 
 hyeon013
