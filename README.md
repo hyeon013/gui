@@ -38,6 +38,48 @@ python main.py
 4. 변환 전 단위와 변환 후 단위를 선택합니다.
 5. 변환된 결과를 확인합니다.
 
+## CSV 하중 분석기
+
+`load_analyzer.py`는 같은 폴더의 `load_data.csv`를 읽어 하중 및 응력을 계산하고, 시간-응력 그래프를 저장합니다. 기존 `force_converter.py` 단위 변환기 설정과 실행 방법은 변경하지 않습니다.
+
+### 입력 데이터
+
+CSV 첫 행에 다음 열 이름을 포함해야 합니다.
+
+| 열 이름 | 의미 | 단위 |
+| --- | --- | --- |
+| `time_s` | 시간 | s |
+| `force_N` | 하중 | N |
+
+### 라이브러리 및 실행
+
+CSV 처리는 Python 표준 라이브러리(`csv`, `math`, `pathlib`)를 사용합니다. 그래프 생성에는 `matplotlib`이 필요합니다. 설치되지 않았다면 다음 명령으로 설치합니다.
+
+```bash
+python -m pip install matplotlib
+```
+
+프로젝트 폴더에서 다음 명령으로 분석기를 실행합니다.
+
+```bash
+python load_analyzer.py
+```
+
+### 계산 설정 및 결과
+
+- 단면적은 `load_analyzer.py`의 `AREA_MM2 = 100`에서 설정합니다.
+- 응력은 `stress_MPa = force_N / AREA_MM2`로 계산합니다. N/mm²는 MPa와 같습니다.
+- 기준 응력은 `REFERENCE_STRESS_MPA = 6`이며, 기준을 초과하는 데이터 개수와 최대 하중·최대 응력 및 해당 시간을 출력합니다.
+- 결과 CSV는 `time_s`, `force_N`, `stress_MPa` 열로 저장합니다. 기본 이름은 `load_result.csv`이며, 같은 이름이 이미 있으면 기존 파일을 덮어쓰지 않고 `load_result_1.csv`, `load_result_2.csv`처럼 새 이름을 사용합니다.
+- 그래프는 `stress_plot.png`로 저장합니다. 그래프에는 시간-응력 선과 데이터 점, 최대 응력점, 6 MPa 기준선이 표시됩니다.
+
+### 오류 데이터 처리
+
+- `time_s` 또는 `force_N`이 비어 있거나 유한한 숫자가 아니면 해당 원본 CSV 행 번호와 문제 값을 출력하고 그 행을 계산, CSV 결과 및 그래프에서 제외합니다. 제외 행 수와 유효 데이터 수를 함께 출력합니다.
+- 필요한 열 이름(`time_s`, `force_N`)이 없으면 오류를 발생시킵니다.
+- 유효한 데이터가 하나도 없으면 안내 메시지를 출력하고 계산 및 결과 파일 저장을 중단합니다.
+- 입력 CSV는 읽기만 하며 수정하지 않습니다.
+
 ## 프로젝트 구조
 
 ```text
